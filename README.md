@@ -1,6 +1,6 @@
-# 🖩 UART-Based Calculator on LPC2148
+# 🖩 UART-Based Calculator on LPC2129
 
-A **bare-metal embedded C project** that implements a real-time arithmetic calculator on the **LPC2148 (ARM7TDMI)** microcontroller. The calculator receives mathematical expressions via **UART serial communication**, evaluates them, and transmits the result back — all without any operating system, HAL, or middleware.
+A **bare-metal embedded C project** that implements a real-time arithmetic calculator on the **LPC2129 (ARM7TDMI)** microcontroller. The calculator receives mathematical expressions via **UART serial communication**, evaluates them, and transmits the result back — all without any operating system, HAL, or middleware.
 
 ---
 
@@ -15,7 +15,7 @@ UART-Calculator/
 │
 ├── Calculator.uvproj   # Keil uVision project file (open this to load the project)
 ├── Calculator.sct      # ARM linker scatter file (memory map configuration)
-└── Calculator.hex      # Compiled firmware — ready to flash onto LPC2148
+└── Calculator.hex      # Compiled firmware — ready to flash onto LPC2129
 ```
 
 ---
@@ -23,7 +23,7 @@ UART-Calculator/
 ## ⚙️ How It Works
 
 ```
-  [PC Terminal]                         [LPC2148]
+  [PC Terminal]                         [LPC2129]
        │                                     │
        │──── Send: "12+34*2" + Enter ───────▶│
        │                                     │  Parse input char-by-char via UART RX
@@ -33,7 +33,7 @@ UART-Calculator/
 ```
 
 1. User types an arithmetic expression in a serial terminal (e.g. PuTTY / Tera Term)
-2. LPC2148 reads characters one-by-one over **UART0**
+2. LPC2129 reads characters one-by-one over **UART0**
 3. On pressing **Enter (CR = 0x0D)**, the expression is evaluated
 4. The result is sent back over UART and displayed in the terminal
 
@@ -55,7 +55,7 @@ UART-Calculator/
 
 | Component | Details |
 |---|---|
-| **Microcontroller** | NXP LPC2148 (ARM7TDMI-S core) |
+| **Microcontroller** | NXP LPC2129 (ARM7TDMI-S core) |
 | **Language** | Embedded C |
 | **IDE** | Keil uVision (ARM MDK) |
 | **Communication** | UART0 — 9600 baud, 8N1 |
@@ -87,7 +87,7 @@ else if(t == 13)                   // Enter key → evaluate & transmit result
 ---
 
 ### `UART0_Driver.c` — Custom Peripheral Driver
-Written entirely from scratch using **direct register access** on the LPC2148. No HAL or library used.
+Written entirely from scratch using **direct register access** on the LPC2129. No HAL or library used.
 
 | Function | Description |
 |---|---|
@@ -110,7 +110,7 @@ U0DLM = (result >> 8) & 0xFF;  // Load upper byte
 
 ### `header.h` — Shared Header
 Contains:
-- LPC2148 register definitions via `#include <lpc21xx.h>`
+- LPC2129 register definitions via `#include <lpc21xx.h>`
 - **MISRA-C aligned typedefs** for portable type safety:
 
 ```c
@@ -128,7 +128,7 @@ typedef signed char         s8;
 ## 🚀 Getting Started
 
 ### Hardware Required
-- LPC2148 Development Board
+- LPC2129 Development Board
 - USB-to-UART (TTL) Module (e.g., CP2102 / CH340)
 - Keil uVision installed on PC
 - Flash tool (Flash Magic or Keil's built-in flasher)
@@ -146,9 +146,9 @@ cd UART-Calculator
 - Open `Calculator.uvproj`
 - Build the project (`F7`) — generates `Calculator.hex`
 
-**3. Flash to LPC2148**
+**3. Flash to LPC2129**
 - Open **Flash Magic**
-- Select COM port, baud rate `9600`, device `LPC2148`
+- Select COM port, baud rate `9600`, device `LPC2129`
 - Load `Calculator.hex` and click **Start**
 
 **4. Open Serial Terminal**
