@@ -183,36 +183,6 @@ Input  →  99999999999+1 Output  →  Buffer Overflow!
 
 ---
 
-## 📌 .gitignore (Recommended)
-
-Add this `.gitignore` to keep your repo clean from Keil build artifacts:
-
-```gitignore
-# Keil build output
-*.o
-*.crf
-*.d
-*.axf
-*.map
-*.lnp
-*.tra
-*.htm
-*.plg
-*.Opt
-*.Uv2
-*.bak
-*.uvgui*
-*.uvopt
-*.dep
-
-# Keep these
-!Calculator.uvproj
-!Calculator.sct
-!Calculator.hex
-```
-
----
-
 ## 👤 Author
 
 **Gopi Shankar V**
