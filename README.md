@@ -137,7 +137,7 @@ typedef signed char         s8;
 
 **1. Clone the Repository**
 ```bash
-git clone https://github.com/<your-username>/UART-Calculator.git
+git clone https://github.com/Gopi-Shankar-V/UART-Calculator.git
 cd UART-Calculator
 ```
 
